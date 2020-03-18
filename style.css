@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+    color: #111;
+    text-decoration: none;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+body {
+    background-color: #F4F7BE;
+}
+
+
+div#wrapper {
+    width: 90%;
+    height: 100vh;
+    
+    /*max-width: 1000px;
+    */
+    margin: auto;
+    background-color: #EFD09E;
+}
+
+nav {
+    background-color: #D4AA7D;
+    padding: 10px;
+}
+
+nav img {
+    display: flexbox;
+}
+
+nav ul {
+    display: flexbox;
+}
+
+nav ul li {
+    display: inline;
+    padding-left: 5%;
+}
+
+nav ul li a.selected {
+    font-weight: bold;
+}
+
+main {
+    background-image: url("hero.jpg");
+    background-size: cover;
+    height: 80vh;
+}

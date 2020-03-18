@@ -1,0 +1,3 @@
+palette:
+l crem - m crem - d crem - l blue - d blue
+F4F7BE - EFD09E - D4AA7D - 6CD4FF - 30BCED 
