@@ -1,3 +1,1 @@
-palette:
-l crem - m crem - d crem - l blue - d blue
-F4F7BE - EFD09E - D4AA7D - 6CD4FF - 30BCED 
+<div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>

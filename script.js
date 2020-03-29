@@ -13,6 +13,7 @@ let booking_Link = document.getElementById("booking_Link");
 let info_Link = document.getElementById("info_Link");
 
 
+
 // function OpenNavBar() {
 //     navbar.style.maxWidth = "none";
 // }
@@ -73,4 +74,36 @@ function changeToInfo() {
     hideAll();
     info.style.display = "block";
     info_Link.className = "selected";
+}
+
+for (let i = 0; i < menuArray.length; i++) {
+
+    console.log(menuArray[i]);
+    
+    let menu_div = document.createElement('div');
+
+    let text_div = document.createElement('div');
+
+    let image = document.createElement('img');
+    image.src = menuArray[i].img;
+
+    let name = document.createElement('h2');
+    name.innerHTML = menuArray[i].name;
+
+    let description = document.createElement('p');
+    description.innerHTML = menuArray[i].description;
+
+    if(i % 2 === 0){
+        menu_div.appendChild(image);
+        text_div.appendChild(name);
+        text_div.appendChild(description);
+        menu_div.appendChild(text_div);
+    } else {
+        text_div.appendChild(name);
+        text_div.appendChild(description);
+        menu_div.appendChild(text_div);
+        menu_div.appendChild(image);
+    }
+
+    menu.appendChild(menu_div);
 }

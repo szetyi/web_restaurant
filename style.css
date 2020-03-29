@@ -1,17 +1,26 @@
+/* Font imports */
+
 @import url('https://fonts.googleapis.com/css?family=Proza+Libre&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Prata');
+
+/* General */
 
 * {
     margin: 0;
     padding: 0;
     text-decoration: none;
     color: #ffffff;
-    font-family: 'Proza Libre', sans-serif;
+    font-family: 'Prata', sans-serif;
 }
 
 p {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
+
+/* Base container */
 
 div#wrapper{
     height: 100vh;
@@ -25,12 +34,32 @@ div#divider {
     height: 100vh;
 }
 
+/* Scrollbar */
+
+::-webkit-scrollbar {
+width: 10px;
+}
+
+::-webkit-scrollbar-track {
+background: #999; 
+}
+
+::-webkit-scrollbar-thumb {
+background: #444; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+background: #555; 
+}
+
+/* Navigation */
+
 nav {
     width: 6vw;
     min-width: 64px;
     background-color: #333;
     transition: ease 1s;
-    font-size: 0.8vw;
+    font-size: max(1em, 12px);
 }
 
 nav:hover {
@@ -100,6 +129,8 @@ div#nav_links div a.selected {
 }
 
 
+/* Main content box */
+
 /* https://source.unsplash.com/1600x900/?meal,healthy */
 
 main {
@@ -113,9 +144,8 @@ main {
 
 div#main_content {
     width: 85%;
-    height: 85%;
-    background-color: #333;
-    opacity: 0.9;
+    height: 90%;
+    background-color: rgba(51,51,51, 0.9);
     margin: auto;
 }
 
@@ -126,8 +156,39 @@ div#main_content {
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-  }
+}
 
-  #menu, #booking, #info {
-      display:none;
-  }
+#menu, #booking, #info {
+    display:none;
+}
+
+/* Menu */
+
+div#menu {
+    height: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+div#menu div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px 0px;
+    padding: 40px 20px;
+    background: #222;
+}
+
+div#menu div img {
+    width: 40%;
+    padding: 0px 5px;
+    border-radius: 50%;
+	box-shadow: 0 0 25px rgba(255,255,255,.6), inset 0 0 20px rgba(255,255,255,1);
+}
+
+div#menu div div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50%;
+}
