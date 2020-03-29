@@ -85,6 +85,7 @@ div#nav_links div a {
 
 div#nav_links div a.selected {
     font-weight: bold;
+    background-color: red;
 }
 
 #logo {
@@ -106,4 +107,27 @@ main {
     background-size: cover;
     width: 100%;
     height: 100vh;
+
+    position: relative;
 }
+
+div#main_content {
+    width: 85%;
+    height: 85%;
+    background-color: #333;
+    opacity: 0.9;
+    margin: auto;
+}
+
+.center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+  #menu, #booking, #info {
+      display:none;
+  }
