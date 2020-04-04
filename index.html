@@ -26,29 +26,39 @@
 
                 <div id="nav_links" class="center">
 
-                    <div><a id="index_Link" class="selected" onclick="changeToIndex()">Home</a></div>
-                    <div><a id="menu_Link" onclick="changeToMenu()">Menu</a></div>
-                    <div><a id="booking_Link" onclick="changeToBooking()">Booking</a></div>
-                    <div><a id="info_Link" onclick="changeToInfo()">Info</a></div>
+                    <div><a id="index_Link" class="selected" onclick="changeTo(index)">Home</a></div>
+                    <div><a id="menu_Link" onclick="changeTo(menu)">Menu</a></div>
+                    <div><a id="booking_Link" onclick="changeTo(booking)">Booking</a></div>
+                    <div><a id="info_Link" onclick="changeTo(info)">Info</a></div>
 
                 </div>
 
             </nav>
-
+            
             <main>
                 <div id="main_content" class="center">
 
                     <!-- INDEX -->
                     <div id="index">
-                        <h1> We are Beyond Health Bar </h1>
-                        <img src="images/bar_view.jfif" alt="">
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatem iusto, porro aut reiciendis in autem minus, sint iure architecto vero dicta aperiam amet consectetur rerum! Doloremque nobis temporibus nostrum ex sunt incidunt ea similique dicta libero praesentium atque, facilis sint excepturi nulla expedita mollitia! Incidunt tenetur molestiae at. Optio, officia!</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti officiis optio, laborum adipisci nam natus repellendus sed vero eius assumenda eum, nisi velit! Aliquam nesciunt nemo, dicta, ad veniam illo error blanditiis sint dolore et excepturi fugiat? Placeat maiores debitis dignissimos, nam tenetur earum. Est delectus quia nemo voluptas sapiente, neque debitis amet sunt eum enim eius temporibus inventore architecto atque ea. Iure aperiam ea eligendi officiis eos aliquid explicabo, cumque possimus qui, earum nam ut natus exercitationem incidunt doloremque!</p>
-
+                        <div id="index-content">
+                            <h1>Beyond Health Bar </h1>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatem iusto, porro aut reiciendis in autem minus, sint iure architecto vero dicta aperiam amet consectetur rerum! Doloremque nobis temporibus nostrum ex sunt incidunt ea similique dicta libero praesentium atque, facilis sint excepturi nulla expedita mollitia! Incidunt tenetur molestiae at. Optio, officia!</p>
+                            <div id="index-content-images">
+                                <img id="bar_img" src="images/salad_bar.jfif" alt="">
+                                <div>
+                                    <img id="logo_img" src="images/logo.png" alt="Beyond Health Bar">
+                                    <h2>* * *</h2>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia dolorum magnam at modi sunt nulla voluptatum nisi molestiae impedit. Harum animi facere placeat excepturi tempore!</p>
+                                </div>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti officiis optio, laborum adipisci nam natus repellendus sed vero eius assumenda eum, nisi velit! Aliquam nesciunt nemo, dicta, ad veniam illo error blanditiis sint dolore et excepturi fugiat? Placeat maiores debitis dignissimos, nam tenetur earum. Est delectus quia nemo voluptas sapiente, neque debitis amet sunt eum enim eius temporibus inventore architecto atque ea. Iure aperiam ea eligendi officiis eos aliquid explicabo, cumque possimus qui, earum nam ut natus exercitationem incidunt doloremque!</p>
+                        </div>
                     </div>
 
                     <!-- MENU -->
+                    <!-- Populated by scripts. -->
                     <div id="menu">
+                        <h1> Menu </h1>
                         <!-- 
                             FOOD_DIV
                                 IMG
@@ -69,7 +79,90 @@
 
                     <!-- INFO -->
                     <div id="info">
-                        INFO
+                        <div id="info-content">
+                            <div id="hours">
+                                <h1> Opening Hours </h1>
+
+                                <table>
+                                    <tr>
+                                        <td>
+                                            Monday
+                                        </td>
+
+                                        <td>
+                                            12 PM - 20 PM
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Tuesday
+                                        </td>
+
+                                        <td>
+                                            12 PM - 20 PM
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Wednesday
+                                        </td>
+
+                                        <td>
+                                            12 PM - 20 PM
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Thursday
+                                        </td>
+
+                                        <td>
+                                            12 PM - 20 PM
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Friday
+                                        </td>
+
+                                        <td>
+                                            10 AM - 22 PM
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Saturday
+                                        </td>
+
+                                        <td>
+                                            10 AM - 22 PM
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Sunday
+                                        </td>
+
+                                        <td>
+                                            12 PM - 20 PM
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div id="events">
+                                <h1> Events reservation </h1>
+                                <p> If you would like to book an event at our bar, please send the details to us. Please include your e-mail address and/or your phone number. Our collegues will respond as soon as possible.</p>
+                                <a href="mailto:reservation@beyondhealthbar.com" class="button"> Book Event </a>
+                            </div>
+                            
+                            <div id="location">
+                                <h1> Location </h1>
+                                <p> Magyarország 1074 Budapest, Rákóczi út 52. </p>
+                                <div id="map"></div>
+                            </div>
+                            
+                        </div>
                     </div>
 
                 </div>
@@ -80,8 +173,8 @@
         
     </div> <!--wrapper-->
 
-
     <script src="menu_data.js"></script>
     <script src="script.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEDu2cGC48dTtjrqtyFklVQG5wx7M-n8A&callback=initMap" async defer></script>
 </body>
 </html>

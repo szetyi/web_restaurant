@@ -24,6 +24,20 @@ p {
     transform: translate(-50%, -50%);
 }
 
+a.button{
+    background-color: #bb3939;
+    padding: 15px;
+    margin: 15px;
+    border: #68b3ae 2px solid;
+    border-radius: 10px;
+    transition: ease 0.1s;
+}
+
+a.button:hover  {
+    box-shadow: 0 0 10px rgba(255,255,255,.6), inset 0 0 20px #bb3939;
+
+}
+
 /* Base container */
 
 div#wrapper{
@@ -142,6 +156,7 @@ div#nav_links div a.selected {
 
 main {
     background-image: url("images/chickpea_plates.jfif");
+    background-color: #68b3ae;
     background-size: cover;
     width: 100%;
     height: 100vh;
@@ -150,8 +165,8 @@ main {
 }
 
 div#main_content {
-    width: 85%;
-    height: 90%;
+    width: 98%;
+    height: 100%;
     /* #333 in rgba */
     background-color: rgba(51,51,51, 0.9);
     margin: auto;
@@ -169,17 +184,50 @@ div#main_content > div {
 
 /* Index */
 
-div#index {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    /* grid-gap: 100px; */
+div#index-content {
+    display: block;
+    padding: 10px;
 }
 
-div#index img {
+div#index-content h1 {
+    text-align: center;
+    font-size: 40px;
+    padding: 5px;
+    margin: 40px 0;
+    background-color: #bb3939;
+    border-radius: 10px;
+	box-shadow: 0 0 25px rgba(255,255,255,.6), inset 0 0 20px #bb3939;
+}
+
+div#index-content-images {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 40px 0;
+}
+
+div#index-content-images img#bar_img {
+    width: 60%;
+    height: 100%;
+    border-radius: 10px;
+	box-shadow: 0 0 25px rgba(255,255,255,.6), inset 0 0 20px #68b3ae;
+    
+}
+
+div#index-content-images div {
+    width: 15%;
+    height: 15%;
+    margin: 20px 0;
+    text-align: center;
+}
+
+div#index-content-images img#logo_img {
     width: 100%;
+    height: 100%;
+    margin: 20px 0;
+    border-radius: 50%;
+	box-shadow: 0 0 25px rgba(255,255,255,.6), inset 0 0 20px #68b3ae;
 }
-
-
 
 /* Menu */
 
@@ -187,13 +235,33 @@ div#menu div {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 10px 0px;
+    margin: 40px 0px;
     padding: 40px 20px;
-    background: #222;
+    background: #333;
+}
+
+
+div#menu h1 {
+    text-align: center;
+    font-size: 40px;
+    margin: 40px 0;
+    padding: 5px;
+    background-color: #bb3939;
+    border-radius: 10px;
+	box-shadow: 0 0 25px rgba(255,255,255,.6), inset 0 0 20px #bb3939;
+}
+
+div#menu h2 {
+    font-size: 30px;
+    padding: 5px 10px;
+    background-color: #68b3ae;
+    border-radius: 10px;
+	box-shadow: 0 0 5px rgba(255,255,255,.6), inset 0 0 20px #68b3ae;
 }
 
 div#menu div img {
     width: 40%;
+    height: 100%;
     padding: 0px 5px;
     border-radius: 50%;
 	box-shadow: 0 0 25px rgba(255,255,255,.6), inset 0 0 20px #68b3ae;
@@ -219,4 +287,43 @@ div#menu div div div img {
     width: 40px;
     border-radius: 0;
     padding-right: 10px;
+}
+
+/* INFO */
+
+div#info-content {
+    display: block;
+    padding: 10px;
+    text-align: center;
+}
+
+div#info-content table {
+    text-align: left;
+}
+
+div#info-content h1 {
+    font-size: 40px;
+    margin: 40px 0;
+    padding: 5px;
+    background-color: #bb3939;
+    border-radius: 10px;
+	box-shadow: 0 0 25px rgba(255,255,255,.6), inset 0 0 20px #bb3939;
+}
+
+div#info-content div#hours table {
+    margin: auto;
+    border-spacing: 50px 5px;
+
+}
+
+div#info-content p {
+    margin-bottom: 30px;
+}
+
+div#map {
+    margin: auto;
+    width: 65%;
+    height: 500px;
+    border: #68b3ae 3px solid;
+    border-radius: 5px;
 }

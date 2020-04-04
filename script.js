@@ -8,14 +8,6 @@ let menu = document.getElementById("menu");
 let booking = document.getElementById("booking");
 let info = document.getElementById("info");
 
-// DOM elements for nav links
-let index_Link = document.getElementById("index_Link");
-let menu_Link = document.getElementById("menu_Link");
-let booking_Link = document.getElementById("booking_Link");
-let info_Link = document.getElementById("info_Link");
-
-
-
 // function OpenNavBar() {
 //     navbar.style.maxWidth = "none";
 // }
@@ -35,6 +27,7 @@ let info_Link = document.getElementById("info_Link");
 // };
 
 //hides all pages
+
 function hideAll() {
     index.style.display = "none";
     menu.style.display = "none";
@@ -47,40 +40,15 @@ function hideAll() {
     info_Link.className = "";
 }
 
-// functions to reveal each page
-
-function changeToIndex() {
-    console.log("index!");
-
+// function to reveal each page
+function changeTo(page) {
+    // console.log(page.id);
     hideAll();
-    index.style.display = "block";
-    index_Link.className = "selected";
+    page.style.display = "block";
+    let link = document.getElementById(String(page.id) + "_Link");
+    // console.log(link);
+    link.className = "selected";
 }
-
-function changeToMenu() {
-    console.log("menu!");
-
-    hideAll();
-    menu.style.display = "block";
-    menu_Link.className = "selected";
-}
-
-function changeToBooking() {
-    console.log("booking!");
-
-    hideAll();
-    booking.style.display = "block";
-    booking_Link.className = "selected";
-}
-
-function changeToInfo() {
-    console.log("info!");
-
-    hideAll();
-    info.style.display = "block";
-    info_Link.className = "selected";
-}
-//
 
 // Generate the menu
 for (let i = 0; i < menuArray.length; i++) {
@@ -126,4 +94,33 @@ for (let i = 0; i < menuArray.length; i++) {
 
     //Finally add the whole thing to the menu page
     menu.appendChild(menu_div);
+}
+
+
+//Google Maps API initialization for INFO page.
+function initMap() {
+
+    let options = {
+        center: {lat: 47.497699, lng: 19.071365},
+        zoom: 16,
+        gestureHandling: 'cooperative'
+    };
+
+    let map = new google.maps.Map(document.getElementById('map'), options);
+
+    let marker = new google.maps.Marker({
+        position: {lat: 47.497699, lng: 19.071365},
+        map: map,
+        icon: "images/logo_icon.png"
+    });
+
+    let infoWindow = new google.maps.InfoWindow({
+        content: "<h2 style='color: #000'> Beyond Health Bar </h2> <p style='color: #000'>Magyarország 1074 Budapest, Rákóczi út 52.</p>"
+    });
+
+    marker.addListener('click', function() {
+        infoWindow.open(map, marker);
+    });
+
+    
 }
