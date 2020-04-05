@@ -1,0 +1,26 @@
+{
+  "name": "web_restaurant",
+  "version": "1.0.0",
+  "description": "Booking backend for the restaurant site",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/szetyi/web_restaurant.git"
+  },
+  "author": "Szilágyi Péter",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/szetyi/web_restaurant/issues"
+  },
+  "homepage": "https://github.com/szetyi/web_restaurant#readme",
+  "dependencies": {
+    "uuid": "^7.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
