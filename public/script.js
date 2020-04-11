@@ -8,6 +8,7 @@ let menu = document.getElementById("menu");
 let booking = document.getElementById("booking");
 let info = document.getElementById("info");
 
+
 // function OpenNavBar() {
 //     navbar.style.maxWidth = "none";
 // }
@@ -26,8 +27,7 @@ let info = document.getElementById("info");
 
 // };
 
-//hides all pages
-
+//hides all pages, used in changeTo(page)
 function hideAll() {
     index.style.display = "none";
     menu.style.display = "none";
@@ -50,7 +50,9 @@ function changeTo(page) {
     link.className = "selected";
 }
 
-// Generate the menu
+// Generate the menu. 
+let menu_content = document.getElementById("menu-content");
+// menuArray is in menu_data.js, which is a database for each menu item
 for (let i = 0; i < menuArray.length; i++) {
 
     // Create new divs for the menu entry, the text div inside, and the icon div inside that.
@@ -93,11 +95,11 @@ for (let i = 0; i < menuArray.length; i++) {
     }
 
     //Finally add the whole thing to the menu page
-    menu.appendChild(menu_div);
+    menu_content.appendChild(menu_div);
 }
 
 
-//Google Maps API initialization for INFO page.
+//Google Maps API initialization for INFO page. Change options.center and marker.position coordinates.
 function initMap() {
 
     let options = {
@@ -123,4 +125,106 @@ function initMap() {
     });
 
     
+}
+
+
+// Booking
+
+// let booking_form = document.getElementById('booking-form');
+
+// These are the clickable tables for selecting where you sit
+let frames = document.querySelectorAll('.frame');
+let selectedFrame = "";
+let selectedTabl;
+
+// This clears all the selected frames.
+function clearSelectedFrames() {
+    frames.forEach(element => {
+        element.classList.remove("selected-frame");
+    });
+}
+
+// This is called by an onclick listener on the frames(inline HTML)
+function selectFrame(frame) {
+    clearSelectedFrames();
+    frame.classList.add("selected-frame");
+    selectedFrame = frame.parentNode.classList[1];
+    // selectedFrame stores "box#" class, where # is the number of the table.
+    // selectedFrame[3]therefore returns the number.
+    console.log(selectedFrame[3]);
+    selectedTable = selectedFrame[3];
+}
+
+
+// Set minimum value of the date input to today, max is already set to 2099-12-31
+let booking_date = document.getElementById('booking-date');
+updateToday();
+
+// When the date is changed, we need to update the opening hours
+booking_date.onchange = () => {dateChange()};
+let booking_hour = document.getElementById("booking-time");
+let extra_hours = document.querySelectorAll('.extra');
+
+// Gets today's date, and sets the form date's min to it.
+// Min attribute accepts yyyy-mm-dd date format, so Date's extensive format is reduced
+function updateToday() {
+    let today = new Date();
+    let dd = today.getDate();
+    let mm = today.getMonth()+1; //January is 0!
+    let yyyy = today.getFullYear();
+
+    if(dd<10){
+        dd='0'+dd
+    } 
+    if(mm<10){
+        mm='0'+mm
+    } 
+
+    today = yyyy+'-'+mm+'-'+dd;
+    booking_date.setAttribute("min", today);
+}
+
+
+// this updated the date input
+function dateChange() {
+    // Get the value of the user's input, and get the day value. 0-6 -> Sunday-Saturday
+    let date = new Date(booking_date.value);
+    let day = date.getDay();
+
+    // If it's Friday or Saturday, the restaurant opens earlier and closes later,
+    // so we add the previously stored extra hours(marked by a class)
+    if(day === 5 || day === 6) {
+        for (let i = 3; i >=0; i--) {
+            booking_hour.insertBefore(extra_hours[i], booking_hour.firstChild);
+        }
+        for (let i = 4; i <8; i++) {
+            booking_hour.appendChild(extra_hours[i]);
+        }
+    // If it's NOT a Friday or Saturday, we have to remove those extra hours.
+    } else {
+        extra_hours.forEach(hour => {
+            try{
+                booking_hour.removeChild(hour);
+            }
+            catch(error) {
+                console.log("Error catched.");
+            }
+        });
+    }
+
+    requestData(booking_date.value);
+}
+
+function requestData(date){
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+           // Typical action to be performed when the document is ready:
+           console.log("RESPONSE RECEIVED: " + xhttp.responseText)
+        }
+    };
+    xhttp.open("GET", `mongo-${date}`, true);
+    xhttp.send();
+
+
 }

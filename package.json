@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/szetyi/web_restaurant#readme",
   "dependencies": {
+    "mongodb": "^3.5.5",
+    "q": "^1.5.1",
     "uuid": "^7.0.3"
   },
   "devDependencies": {
