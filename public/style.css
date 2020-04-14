@@ -378,7 +378,12 @@ div.frame:hover {
 }
 
 div.selected-frame {
-    background-color: #bb3939;
+    background-color: #39bb39;
+}
+
+div.taken-frame {
+    color: #bb3939;
+    cursor: default;
 }
 
 .helper {

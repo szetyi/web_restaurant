@@ -161,7 +161,7 @@ let booking_date = document.getElementById('booking-date');
 updateToday();
 
 // When the date is changed, we need to update the opening hours
-booking_date.onchange = () => {dateChange()};
+// booking_date.onchange = () => {dateChange()};
 let booking_hour = document.getElementById("booking-time");
 let extra_hours = document.querySelectorAll('.extra');
 
@@ -185,11 +185,17 @@ function updateToday() {
 }
 
 
+let currBookingResponse = [];
+
 // this updated the date input
 function dateChange() {
     // Get the value of the user's input, and get the day value. 0-6 -> Sunday-Saturday
     let date = new Date(booking_date.value);
     let day = date.getDay();
+    let date_time = {
+        date : booking_date.value,
+        time : booking_hour.value
+    }
 
     // If it's Friday or Saturday, the restaurant opens earlier and closes later,
     // so we add the previously stored extra hours(marked by a class)
@@ -207,24 +213,89 @@ function dateChange() {
                 booking_hour.removeChild(hour);
             }
             catch(error) {
-                console.log("Error catched.");
+                if(error.name != "NotFoundError") {
+                    console.log("Error catched: " + error);
+                }
             }
         });
     }
 
-    requestData(booking_date.value);
+    requestData(date_time);
 }
 
-function requestData(date){
+function requestData(date_time){
+    if(date_time.date == "") {
+        return;
+    }
+
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
            // Typical action to be performed when the document is ready:
-           console.log("RESPONSE RECEIVED: " + xhttp.responseText)
+            console.log("RESPONSE RECEIVED: " + (xhttp.responseText));
+            currBookingResponse = JSON.parse(xhttp.responseText);
+            
+            var now = parseTime(date_time.time);
+            var before = {};
+            before = Object.assign(before, now);
+            var after = {};
+            after = Object.assign(after, now);
+            
+            if(now.min == 30) {
+                before.min = 0;
+                after.hr = after.hr+1;
+                after.min = 0;
+            } else {
+                before.min = 30;
+                before.hr = before.hr-1;
+                after.min = 30;
+            }
+            
+            // console.log("Before: ");
+            // console.log(before);
+            // console.log("Now: ");
+            // console.log(now);
+            // console.log("After: ");
+            // console.log(after);
+
+
+            currBookingResponse.forEach(function(booking){
+                // console.log(booking.name); 
+                
+
+            });
+
+            
+            
         }
     };
-    xhttp.open("GET", `mongo-${date}`, true);
+    xhttp.open("GET", `mongo-${date_time.date}`, true);
     xhttp.send();
-
-
 }
+
+String.prototype.replaceAt=function(index, replacement) {
+    return this.substr(0, index) + replacement+ this.substr(index + replacement.length);
+};
+
+function parseTime(timeInString) {
+    let obj = {
+        hr : 0,
+        min : 0
+    };
+    obj.hr = Number(timeInString.substr(0,2));
+    obj.min = Number(timeInString.substr(3,4));
+
+    return obj;
+}
+
+// setInterval(()=> {console.log("value of date: " + booking_date.value + "value of time: " + booking_hour.value)}, 2000)
+setInterval(()=> {
+    // let date_time = {
+    //     date = booking_date.value,
+    //     time = booking_hour.value
+    // }
+    console.log("tick");
+    dateChange();
+
+
+}, 3000)

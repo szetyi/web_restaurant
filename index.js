@@ -43,20 +43,21 @@ const server = http.createServer((req, res) => {
     if(regex.test(req.url)) {
        
         let requestedDate = req.url.slice(7,17);
-        console.log("req date: " + requestedDate);
+        console.log("client requested date: " + requestedDate);
 
         let data;
         let getMongoData = async (reqDate) => {
             // await client.connect();
-            console.log("cilent connected.")
+            // console.log("cilent connected.")
             data = await client.db('restaurant').collection('booking').find({"date": reqDate}).toArray();
             
-            console.log("DATA stringified:")
-            console.log(JSON.stringify(data));
+            // console.log("DATA stringified:")
+            // console.log(JSON.stringify(data));
 
             res.writeHead(200, {'Content-Type': 'application/json'})
             res.write(JSON.stringify(data));
             res.end();
+            console.log("response sent to client.");
             
             // await client.close();
             // console.log("client closed finally.");
@@ -133,56 +134,6 @@ const server = http.createServer((req, res) => {
 const PORT = process.env.PORT || 5000;
 
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-/*
-function promiseState(p) {
-    const t = {};
-    return Promise.race([p, t])
-      .then(v => (v === t)? "pending" : "fulfilled", () => "rejected");
-}
-
-// MONGODB DATABASE
-const {MongoClient} = require('mongodb');
-
-async function main() {
-    let uri = "mongodb+srv://szilagyi_peter96:666Thenumberofthebeast@mycluster-ndtih.gcp.mongodb.net/test?retryWrites=true&w=majority";
-    const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true })
-
-    try {
-        // Connect to the MongoDB cluster
-        await client.connect();
- 
-        // Make the appropriate DB calls
-        // await  listDatabases(client);
-        
-        let data = await getData(client);
-
-        console.log("MAIN:")
-        console.log(data);
-        return data;
- 
-    } catch (e) {
-        console.error(e);
-    } finally {
-        await client.close();
-    }
-}
-
-async function getData(client){
-
-    let data = await client.db('restaurant').collection('booking').find().toArray();
-    // JSON.stringify(data);
-    console.log("GETDATA:")
-    console.log(data);
-    return data;
-}
-
-async function listDatabases(client){
-    databasesList = await client.db().admin().listDatabases();
- 
-    console.log("Databases:");
-    databasesList.databases.forEach(db => console.log(` - ${db.name}`));
-};
-*/
 
 if (process.platform === "win32") {
     var rl = require("readline").createInterface({
