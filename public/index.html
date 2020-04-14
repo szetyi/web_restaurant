@@ -79,9 +79,21 @@
                         <div id="booking-content">
                             <h1> Booking </h1>
                             <div id="booking-form">
+                                <label for="name"> Name </label>
+                                <input type="text" name="name" id="name" placeholder="Firstname Lastname">
+
+                                <label for="seats"> Seats </label>
+                                <input type="number" name="seats" id="seats" placeholder="2">
+                                
+                                <label for="phone"> Phone </label>
+                                <input type="tel" name="phone" id="phone" pattern="[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*" placeholder="+(36) 30 1234 567">
+
+                                <label for="email"> Email </label>
+                                <input type="email" name="email" id="email" placeholder="you@provider.com">
+                                
                                 <label for="booking-date"> Date </label>
                                 <input type="date" name="booking-date" id="booking-date" max="2099-12-31">
-
+                                
                                 <label for="booking-time"> Time </label>
                                 <select name="booking-time" id="booking-time">
                                     <option class="extra" value="10:00">10:00</option>
@@ -109,6 +121,8 @@
                                     <option class="extra" value="21:00">21:00</option>
                                     <option class="extra" value="21:30">21:30</option>
                                 </select>
+
+                                
                             </div>
 
                             <p> Please select which table you would like to sit at.</p>
@@ -173,7 +187,7 @@
                             </div>
 
                             <div id="booking-submit">
-                                <a href="" class="button">Submit</a>
+                                <a href="" class="button" onclick="submitBooking()">Submit</a>
                             </div>
 
                         </div>
@@ -276,7 +290,7 @@
     </div> <!--wrapper-->
 
     <script src="menu_data.js"></script>
-    <script src="script.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEDu2cGC48dTtjrqtyFklVQG5wx7M-n8A&callback=initMap" async defer></script>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -123,8 +123,6 @@ function initMap() {
     marker.addListener('click', function() {
         infoWindow.open(map, marker);
     });
-
-    
 }
 
 
@@ -135,7 +133,21 @@ function initMap() {
 // These are the clickable tables for selecting where you sit
 let frames = document.querySelectorAll('.frame');
 let selectedFrame = "";
-let selectedTabl;
+let selectedTable;
+
+function submitBooking() {
+    let FieldsOk = validateForm();
+    
+    if(FieldsOk) {
+        // send data
+    } else {
+        // indicate form invaidation
+    }
+}
+
+function validateForm() {
+    return false;
+}
 
 // This clears all the selected frames.
 function clearSelectedFrames() {
@@ -151,17 +163,25 @@ function selectFrame(frame) {
     selectedFrame = frame.parentNode.classList[1];
     // selectedFrame stores "box#" class, where # is the number of the table.
     // selectedFrame[3]therefore returns the number.
-    console.log(selectedFrame[3]);
     selectedTable = selectedFrame[3];
+    // console.log(selectedTable);
 }
 
+function resetFrames() {
+    frames.forEach(element => {
+        element.classList.remove("selected-frame");
+        element.classList.remove("taken-frame");
+        element.setAttribute('onclick','selectFrame(this)');
+    });
+
+}
 
 // Set minimum value of the date input to today, max is already set to 2099-12-31
 let booking_date = document.getElementById('booking-date');
 updateToday();
 
 // When the date is changed, we need to update the opening hours
-// booking_date.onchange = () => {dateChange()};
+booking_date.onchange = () => {dateChange()};
 let booking_hour = document.getElementById("booking-time");
 let extra_hours = document.querySelectorAll('.extra');
 
@@ -188,14 +208,11 @@ function updateToday() {
 let currBookingResponse = [];
 
 // this updated the date input
-function dateChange() {
+function dateChange(date_time) {
     // Get the value of the user's input, and get the day value. 0-6 -> Sunday-Saturday
     let date = new Date(booking_date.value);
     let day = date.getDay();
-    let date_time = {
-        date : booking_date.value,
-        time : booking_hour.value
-    }
+
 
     // If it's Friday or Saturday, the restaurant opens earlier and closes later,
     // so we add the previously stored extra hours(marked by a class)
@@ -219,8 +236,6 @@ function dateChange() {
             }
         });
     }
-
-    requestData(date_time);
 }
 
 function requestData(date_time){
@@ -234,8 +249,10 @@ function requestData(date_time){
            // Typical action to be performed when the document is ready:
             console.log("RESPONSE RECEIVED: " + (xhttp.responseText));
             currBookingResponse = JSON.parse(xhttp.responseText);
-            
-            var now = parseTime(date_time.time);
+                    
+            resetFrames();
+
+            var now = parseTimeToObj(date_time.time);
             var before = {};
             before = Object.assign(before, now);
             var after = {};
@@ -251,16 +268,27 @@ function requestData(date_time){
                 after.min = 30;
             }
             
-            // console.log("Before: ");
-            // console.log(before);
-            // console.log("Now: ");
-            // console.log(now);
-            // console.log("After: ");
-            // console.log(after);
+            console.log("Before: ");
+            console.log(before);
+            console.log("Now: ");
+            console.log(now);
+            console.log("After: ");
+            console.log(after);
 
 
             currBookingResponse.forEach(function(booking){
-                // console.log(booking.name); 
+                if (
+                    (booking.time == parseTimeToString(before))
+                    || (booking.time == parseTimeToString(now))
+                    || (booking.time == parseTimeToString(after))
+                ) {
+                    console.log("conflict at table " + booking.table);
+                    frames[booking.table - 1].classList.add('taken-frame');
+                    frames[booking.table - 1].onclick = null;
+
+                } else {
+                    // console.log("no conflict");
+                }
                 
 
             });
@@ -277,7 +305,7 @@ String.prototype.replaceAt=function(index, replacement) {
     return this.substr(0, index) + replacement+ this.substr(index + replacement.length);
 };
 
-function parseTime(timeInString) {
+function parseTimeToObj(timeInString) {
     let obj = {
         hr : 0,
         min : 0
@@ -289,13 +317,43 @@ function parseTime(timeInString) {
 }
 
 // setInterval(()=> {console.log("value of date: " + booking_date.value + "value of time: " + booking_hour.value)}, 2000)
+let old_date_time = {
+    date : booking_date.value,
+    time : booking_hour.value
+};
+
+function parseTimeToString(timeInObj) {
+    if(timeInObj.min < 10) {
+        return timeInObj.hr + ":0" + timeInObj.min; 
+    } else {
+        return timeInObj.hr + ":" + timeInObj.min; 
+    }
+}
+
 setInterval(()=> {
-    // let date_time = {
-    //     date = booking_date.value,
-    //     time = booking_hour.value
-    // }
-    console.log("tick");
-    dateChange();
+    let date_time = {
+        date : booking_date.value,
+        time : booking_hour.value
+    }
 
+    dateChange(date_time);
 
-}, 3000)
+    if (
+        !(
+        (date_time.date == old_date_time.date)
+        &&
+        (date_time.time == old_date_time.time)
+        )
+    ) {
+        requestData(date_time);
+    } else {
+        // console.log("up to date");
+    }
+
+    old_date_time = Object.assign(old_date_time, date_time);
+
+}, 2000)
+
+// frames.forEach(element => {
+//     console.log(element.parentNode.classList);
+// });

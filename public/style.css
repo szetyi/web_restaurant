@@ -322,6 +322,7 @@ div#booking div#booking-form {
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-content: start;
+    grid-gap: 10px;
 }
 
 div#booking div#booking-form label {
@@ -331,7 +332,8 @@ div#booking div#booking-form label {
 div#booking div#booking-form input, select, option {
     color: black;
     justify-self: end;
-    min-width: 150px;
+    min-width: 100px;
+    max-width: 150px;
 }
 
 
@@ -382,7 +384,11 @@ div.selected-frame {
 }
 
 div.taken-frame {
-    color: #bb3939;
+    background-color: #bb3939;
+}
+
+div.taken-frame:hover {
+    background-color: #bb3939;
     cursor: default;
 }
 
@@ -465,19 +471,8 @@ div#booking div#booking-submit {
     margin: auto;
     margin-top: 40px;
     background-color: #333;
-    padding: 40px;
+    padding: 40px 20px;
 }
-
-/* div#booking div#booking-submit input {
-    padding: 10px 50px;
-    font-size: 20px;
-    background-color: #bb3939;
-} */
-
-/* 
-div.box-street p {
-    transform: rotateX(90);
-} */
 
 /* INFO */
 
