@@ -211,7 +211,6 @@ div#index-content-images img#bar_img {
     height: 100%;
     border-radius: 10px;
 	box-shadow: 0 0 25px rgba(255,255,255,.6), inset 0 0 20px #68b3ae;
-    
 }
 
 div#index-content-images div {
@@ -269,6 +268,7 @@ div#menu div div img {
     height: 100%;
     padding: 0px 5px;
     border-radius: 50%;
+    align-self: center;
 	box-shadow: 0 0 25px rgba(255,255,255,.6), inset 0 0 20px #68b3ae;
 }
 
@@ -296,7 +296,7 @@ div#menu div div div div img {
 
  /* BOOKING  */
 
- div#booking-content {
+ form#booking-content {
     display: block;
     padding: 10px;
     text-align: center;
@@ -474,6 +474,10 @@ div#booking div#booking-submit {
     padding: 40px 20px;
 }
 
+#booking-submit p {
+    margin-bottom: 50px;
+}
+
 /* INFO */
 
 div#info-content {
@@ -511,4 +515,12 @@ div#map {
     height: 500px;
     border: #68b3ae 3px solid;
     border-radius: 5px;
+}
+
+@media screen and (max-width: 992px) {
+    
+}
+
+@media screen and (max-width: 600px) {
+
 }

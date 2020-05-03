@@ -76,23 +76,23 @@
 
                     <!-- BOOKING -->
                     <div id="booking">
-                        <div id="booking-content">
+                        <form id="booking-content">
                             <h1> Booking </h1>
                             <div id="booking-form">
                                 <label for="name"> Name </label>
-                                <input type="text" name="name" id="name" placeholder="Firstname Lastname">
+                                <input type="text" name="name" id="name" placeholder="Firstname Lastname" required>
 
                                 <label for="seats"> Seats </label>
-                                <input type="number" name="seats" id="seats" placeholder="2">
+                                <input type="number" name="seats" id="seats" placeholder="2" required>
                                 
                                 <label for="phone"> Phone </label>
-                                <input type="tel" name="phone" id="phone" pattern="[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*" placeholder="+(36) 30 1234 567">
+                                <input type="tel" name="phone" id="phone" pattern="[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*" placeholder="+(36) 30 1234 567" required>
 
                                 <label for="email"> Email </label>
-                                <input type="email" name="email" id="email" placeholder="you@provider.com">
+                                <input type="email" name="email" id="email" placeholder="you@provider.com" required>
                                 
                                 <label for="booking-date"> Date </label>
-                                <input type="date" name="booking-date" id="booking-date" max="2099-12-31">
+                                <input type="date" name="booking-date" id="booking-date" max="2099-12-31" required>
                                 
                                 <label for="booking-time"> Time </label>
                                 <select name="booking-time" id="booking-time">
@@ -187,10 +187,12 @@
                             </div>
 
                             <div id="booking-submit">
+                                <p><span id="form_error"></span></p>
                                 <a href="" class="button" id="submit">Submit</a>
+                                <!-- <input type="submit" value="Submit" class="button" id="submit"> -->
                             </div>
 
-                        </div>
+                        </form>
                     </div>
 
                     <!-- INFO -->

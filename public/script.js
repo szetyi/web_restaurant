@@ -139,6 +139,7 @@ let name_field = document.getElementById('name');
 let seats_field = document.getElementById('seats');
 let phone_field = document.getElementById('phone');
 let email_field = document.getElementById('email');
+let form_error = document.getElementById('form_error');
 
 let submit_button = document.getElementById('submit');
 submit_button.addEventListener("click", function(event) {
@@ -146,11 +147,10 @@ submit_button.addEventListener("click", function(event) {
     submitBooking();
 }, false);
 
-function submitBooking() {
-    let FieldsOk = validateForm();
+async function submitBooking() {
     
-    if(FieldsOk) {
-        console.log("Valid");
+    if(validateForm()) {
+        // console.log("Valid");
 
         let json = {
             name:  name_field.value,
@@ -162,14 +162,14 @@ function submitBooking() {
             table : parseInt(selectedTable)
         };
         // console.log("sent JSON: " + JSON.stringify(json));
-        sendData(json);
-
-        
-        
-        // send data
-    } else {
-        console.log("Invalid");
-        // indicate form invaidation
+                
+        await sendData(json);
+        requestData(
+            {
+                date : booking_date.value,
+                time : booking_hour.value
+            }
+        );
     }
 }
 
@@ -183,33 +183,106 @@ function validateForm() {
     // console.log("TABLE: " + selectedTable);
     
     if(
-            name_field.value != ""
-        &&  seats_field.value != ""
-        &&  parseInt(seats_field.value) > 0 
-        &&  phone_field.value != ""
-        &&  email_field.value != ""
-        &&  booking_date.value != ""
-        &&  booking_hour.value != ""
-        &&  selectedTable != undefined
+            checkName()
+        &&  checkSeats()
+        &&  checkPhone()
+        &&  checkEmail()
+        &&  checkDate()
+        &&  checkHour()
         &&  checkTables()
         
     ) {
+        alert("Thank you for your reservation! See you soon!")
+        form_error.innerHTML = "Thank you for your reservation! See you soon!";
         return true;
     }
 
     return false;
 }
 
+function checkName() {
+    if(name_field.value == "") {
+        form_error.innerHTML = "Please enter your name!";
+        console.log("No name entered");
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function checkSeats() {
+    if(seats_field.value == "") {
+        form_error.innerHTML = "Please enter how many seats you would like to book!";
+        console.log("No seats selected");
+        return false;
+    } else if( parseInt(seats_field.value) < 1) {
+        form_error.innerHTML = "You have to book at least one seat!";
+        console.log("At least one seat has to be booked.")
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function checkPhone() {
+    if( phone_field.value == "") {
+        form_error.innerHTML = "Please enter your phone number!";
+        console.log("No phone number entered.");
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function checkEmail() {
+    if(email_field.value == "") {
+        form_error.innerHTML = "Please enter your email!";
+        console.log("No email entered.");
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function checkDate() {
+    if(booking_date.value == "") {
+        form_error.innerHTML = "Please select a date!";
+        console.log("No date selected");
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function checkHour() {
+    if(booking_hour.value == "") {
+        form_error.innerHTML = "Please select an hour!";
+        console.log("No hour selected");
+        return false;
+    } else {
+        return true;
+    }
+}
+
 function checkTables() {
+
+    if(selectedTable == undefined) {
+        form_error.innerHTML = "Please select a table!";
+        console.log("No selected table");
+        return false;
+    }
+
     for (let i = 0; i < currentResponseTables.length; i++) {
-        if(currentResponseTables[i] == selectedTable){
+        if(currentResponseTables[i] == selectedTable){    
+            form_error.innerHTML = "Your selected table is unavailable. Please select another one!";
+            console.log("Selected table conflicts with an already taken table");
             return false;
         }
     }
     return true;
 }
 
-function sendData(data){
+async function sendData(data){
     
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
