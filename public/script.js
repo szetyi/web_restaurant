@@ -134,19 +134,93 @@ function initMap() {
 let frames = document.querySelectorAll('.frame');
 let selectedFrame = "";
 let selectedTable;
+let currentResponseTables = [];
+let name_field = document.getElementById('name');
+let seats_field = document.getElementById('seats');
+let phone_field = document.getElementById('phone');
+let email_field = document.getElementById('email');
+
+let submit_button = document.getElementById('submit');
+submit_button.addEventListener("click", function(event) {
+    event.preventDefault();
+    submitBooking();
+}, false);
 
 function submitBooking() {
     let FieldsOk = validateForm();
     
     if(FieldsOk) {
+        console.log("Valid");
+
+        let json = {
+            name:  name_field.value,
+            seats: parseInt(seats_field.value),
+            phone : phone_field.value,
+            email : email_field.value,
+            date : booking_date.value,
+            time : booking_hour.value,
+            table : parseInt(selectedTable)
+        };
+        // console.log("sent JSON: " + JSON.stringify(json));
+        sendData(json);
+
+        
+        
         // send data
     } else {
+        console.log("Invalid");
         // indicate form invaidation
     }
 }
 
 function validateForm() {
+    // console.log("NAME: " + name_field.value);
+    // console.log("SEATS: " + seats_field.value);
+    // console.log("PHONE: " + phone_field.value);
+    // console.log("EMAIL: " + email_field.value);
+    // console.log("DATE: " + booking_date.value);
+    // console.log("TIME: " + booking_hour.value);
+    // console.log("TABLE: " + selectedTable);
+    
+    if(
+            name_field.value != ""
+        &&  seats_field.value != ""
+        &&  parseInt(seats_field.value) > 0 
+        &&  phone_field.value != ""
+        &&  email_field.value != ""
+        &&  booking_date.value != ""
+        &&  booking_hour.value != ""
+        &&  selectedTable != undefined
+        &&  checkTables()
+        
+    ) {
+        return true;
+    }
+
     return false;
+}
+
+function checkTables() {
+    for (let i = 0; i < currentResponseTables.length; i++) {
+        if(currentResponseTables[i] == selectedTable){
+            return false;
+        }
+    }
+    return true;
+}
+
+function sendData(data){
+    
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+           // Typical action to be performed when the document is ready:
+            // console.log("RESPONSE RECEIVED: " + (xhttp.responseText));
+        }
+    };
+    xhttp.open("POST", ``, true);
+    xhttp.setRequestHeader("Content-Type", "application/json");
+    xhttp.send(JSON.stringify(data));
 }
 
 // This clears all the selected frames.
@@ -247,10 +321,12 @@ function requestData(date_time){
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
            // Typical action to be performed when the document is ready:
-            console.log("RESPONSE RECEIVED: " + (xhttp.responseText));
+            // console.log("RESPONSE RECEIVED: " + (xhttp.responseText));
             currBookingResponse = JSON.parse(xhttp.responseText);
                     
             resetFrames();
+            currentResponseTables = [];
+            selectedTable = undefined;
 
             var now = parseTimeToObj(date_time.time);
             var before = {};
@@ -268,12 +344,12 @@ function requestData(date_time){
                 after.min = 30;
             }
             
-            console.log("Before: ");
-            console.log(before);
-            console.log("Now: ");
-            console.log(now);
-            console.log("After: ");
-            console.log(after);
+            // console.log("Before: ");
+            // console.log(before);
+            // console.log("Now: ");
+            // console.log(now);
+            // console.log("After: ");
+            // console.log(after);
 
 
             currBookingResponse.forEach(function(booking){
@@ -282,7 +358,13 @@ function requestData(date_time){
                     || (booking.time == parseTimeToString(now))
                     || (booking.time == parseTimeToString(after))
                 ) {
-                    console.log("conflict at table " + booking.table);
+                    // console.log("conflict at table " + booking.table);
+                    currentResponseTables.push(booking.table);
+                    // console.log("Currently taken tables: ");
+                    // for (let i = 0; i < currentResponseTables.length; i++) {
+                    //     console.log(currentResponseTables[i]);
+                        
+                    // }
                     frames[booking.table - 1].classList.add('taken-frame');
                     frames[booking.table - 1].onclick = null;
 
