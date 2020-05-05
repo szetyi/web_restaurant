@@ -34,10 +34,10 @@ function hideAll() {
     booking.style.display = "none";
     info.style.display = "none";
 
-    index_Link.className = "";
-    menu_Link.className = "";
-    booking_Link.className = "";
-    info_Link.className = "";
+    index_Link.className = "button";
+    menu_Link.className = "button";
+    booking_Link.className = "button";
+    info_Link.className = "button";
 }
 
 // function to reveal each page
@@ -47,7 +47,7 @@ function changeTo(page) {
     page.style.display = "block";
     let link = document.getElementById(String(page.id) + "_Link");
     // console.log(link);
-    link.className = "selected";
+    link.className = "selected button";
 }
 
 // Generate the menu. 
@@ -73,19 +73,19 @@ for (let i = 0; i < menuArray.length; i++) {
     description.innerHTML = menuArray[i].description;
 
     // This places the image left or right alternating.
-    if(i % 2 === 0){
+    // if(i % 2 === 0){
         menu_div.appendChild(image);
         text_div.appendChild(name);
         text_div.appendChild(icon_div);
         text_div.appendChild(description);
         menu_div.appendChild(text_div);
-    } else {
-        text_div.appendChild(name);
-        text_div.appendChild(icon_div);
-        text_div.appendChild(description);
-        menu_div.appendChild(text_div);
-        menu_div.appendChild(image);
-    }
+    // } else {
+    //     text_div.appendChild(name);
+    //     text_div.appendChild(icon_div);
+    //     text_div.appendChild(description);
+    //     menu_div.appendChild(text_div);
+    //     menu_div.appendChild(image);
+    // }
     
     //Populate the icons div, icons are determined in menu_data.js
     for (let j = 0; j < menuArray[i].icons.length; j++) {
@@ -192,7 +192,7 @@ function validateForm() {
         &&  checkTables()
         
     ) {
-        alert("Thank you for your reservation! See you soon!")
+        // alert("Thank you for your reservation! See you soon!");
         form_error.innerHTML = "Thank you for your reservation! See you soon!";
         return true;
     }

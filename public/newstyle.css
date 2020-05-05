@@ -1,0 +1,491 @@
+
+/* Fonts import */
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Prata');
+
+/* General */
+
+:root {
+    --primary-color: #bb3939;
+    --secondary-color: #68b3ae;
+    --dark-color: #303030;
+    --lighter-color: #555;
+    --glow-color: rgba(255,255,255,.6);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    color: #ffffff;
+    font-family: 'Prata', sans-serif;
+    display: border-box;
+    text-align: center;
+}
+
+html, body {
+    height: 100vh;
+    overflow: hidden;
+}
+
+body{
+    background-color: var(--dark-color);
+}
+
+#wrapper {
+    height: 100vh;
+    width: 100%;
+}
+
+img{
+    max-width: 100%;
+}
+
+#booking, #info, #menu {
+    display: none;
+}
+
+/* #menu, #booking, #info {
+    display: none;
+} */
+
+h1 {
+    text-align: center;
+    font-size: 30px;
+    margin: 20px 5px;
+    padding: 5px;
+    background-color: var(--primary-color);
+    border-radius: 10px;
+	box-shadow: 0 0 15px var(--glow-color), inset 0 0 20px var(--primary-color);
+}
+
+.button {
+    margin: 10px 5px;
+    padding: 5px;
+    max-width: 200px;
+    width: 20%;
+    background-color: var(--primary-color);
+    cursor: pointer;
+    border-radius: 5px;
+    border-bottom: solid 2px var(--secondary-color);
+    transition: ease 0.2s;
+}
+
+
+.button:active {
+    border-bottom: none;
+    transform: translateY(2px);
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+    width: 10px;
+    }
+    
+::-webkit-scrollbar-track {
+    background: #999; 
+    }
+
+::-webkit-scrollbar-thumb {
+    background: #444; 
+    }
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+    }
+    
+
+/* NAVIGATION */
+
+#navbar {
+    width: 100%;
+    box-shadow: 0 0 5px #111111;
+    background-color: var(--dark-color);
+    z-index: 10;
+    position: fixed;
+}
+
+#logo {
+    display: none;
+    margin-left: 20px;
+    max-height: 200px;
+    align-self: center;
+}
+
+#nav-links {
+    margin: 0 20px;
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    justify-content: space-between;
+}
+
+#nav-links a {
+    /* max-height: 40px; */
+    align-self: center;
+}
+
+.selected {
+    box-shadow: 0 0 10px var(--glow-color), inset 0 0 20px var(--primary-color);
+}
+
+/* CONTENT-BOX */
+
+main {
+    background-image: url("images/chickpea_plates.jfif");
+    background-size: cover;
+    width: 100%;
+    height: 95%;
+    position: relative;
+    top: 5%;
+}
+
+div#main_content {
+    width: 100%;
+    height: 100%;
+    /* #333 in rgba */
+    background-color: rgba(51,51,51, 0.9);
+    margin: auto;
+}
+
+div#main_content > div {
+    height: 100%;
+    padding: 5px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+/* HOME */
+
+#logo_img{
+    margin-bottom: 20px;
+    width: 50%;
+    max-width: 200px;
+    border-radius: 50%;
+	box-shadow: 0 0 20px var(--glow-color);
+}
+
+#index-content p {
+    margin: 10px 0px;
+    text-align: justify;
+}
+
+#bar_img {
+    border-radius: 10px;
+	box-shadow: 0 0 10px var(--glow-color);
+}
+
+/* MENU */
+
+    /* Each menu item */
+#menu-content > div {
+    /* border: solid var(--dark-color) 2px; */
+    border-radius: 5px;
+    box-shadow: inset 0 0 15px var(--dark-color), 0 0 15px var(--dark-color);
+    margin: 30px 0;
+    border-bottom: solid var(--dark-color) 5px;
+    background-color: var(--dark-color);
+    padding: 20px 5px;
+}
+
+    /* Food image */
+#menu-content > div > img {
+    width: 90%;
+    max-width: 600px;
+    margin: 10px 0;
+    border-radius: 50%;
+    box-shadow: 0 0 15px var(--glow-color);
+}
+
+#menu-content > div h2 {
+    margin: 15px 5px;
+    border-bottom: solid 3px var(--secondary-color);
+}
+
+#menu-content > div p {
+    margin: 15px;
+    text-align: justify;
+}
+
+    /* Allergens div */
+#menu-content > div div div {
+    display: inline;
+}
+
+    /* Allergens imgs */
+#menu-content > div div div img {
+    width: 10%;
+    max-width: 50px;
+    padding: 5px;
+}
+
+/* BOOKING */
+
+#booking-form {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 20px;
+    background-color: var(--dark-color);
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: start;
+    grid-gap: 10px;
+}
+
+#booking-form label {
+    text-align: left;
+}
+
+#booking-form input, select, option {
+    color: black;
+    text-align: left;
+}
+
+div#booking-select {
+    margin: auto;
+    margin-top: 30px;
+    width: 85%;
+    display: grid;
+    grid-template-columns: 5% 30% 5% 30% 30%;
+    grid-gap: 5px;
+    grid-auto-rows: minmax(50px, auto);
+
+    /* border: #bb3939 solid 10px;
+    border-radius: 5px; */
+
+    border-radius: 10px;
+    box-shadow: 0 0 0 5px var(--primary-color), 0 0 25px var(--glow-color);
+    
+	/* box-shadow: 0 0 25px rgba(255,255,255,.6), inset 0 0 20px #bb3939; */
+    
+    padding: 20px;
+}
+
+div.box {
+    background-color: var(--dark-color);
+    border: var(--secondary-color) solid 1px; 
+    margin: 10px;
+    padding: 5px;
+    /* max-width: 200px; */
+    
+}
+
+div#booking-select .frame {
+    height: 100%;
+    white-space: nowrap;
+    text-align: center;
+    transition: ease 0.3s;
+}
+
+div.selected-frame {
+    background-color: #39bb39;
+}
+
+div.taken-frame {
+    background-color: var(--primary-color);
+}
+
+div.taken-frame:hover {
+    background-color: var(--primary-color);
+    cursor: default;
+}
+
+.helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+div.box .frame img {
+    vertical-align: middle;
+}
+
+div.box img {
+    width: 75%;
+    max-width: 50px;
+}
+
+div.box-street {
+    grid-column: 1;
+    grid-row: 1/7;
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    justify-self: center;
+}
+
+div.box-wall {
+    grid-column: 3;
+    grid-row: 1/7;
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    justify-self: center;
+}
+
+div.box1 {
+    grid-column: 2;
+    grid-row: 3/5;
+}
+
+div.box2 {
+    grid-column: 2;
+    grid-row: 5/7;
+}
+
+div.box3 {
+    grid-column: 4;
+    grid-row: 1/3;
+}
+
+div.box4 {
+    grid-column: 4;
+    grid-row: 3/5;
+}
+
+div.box5 {
+    grid-column: 4;
+    grid-row: 5/7;
+}
+
+div.box6 {
+    grid-column: 5;
+    grid-row: 3/5;
+}
+
+div.box7 {
+    grid-column: 5;
+    grid-row: 5/7;
+}
+
+div.box8 {
+    grid-column: 5;
+    grid-row: 1/3;
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    justify-self: left;
+}
+
+
+#booking-submit {
+    width: 30%;
+    margin: 40px auto;
+    background-color: var(--dark-color);
+    padding: 40px 20px;
+    
+}
+
+#booking-submit p {
+    margin-bottom: 50px;
+}
+
+/* INFO */
+
+#hours table td {
+    text-align: left;
+}
+
+div#info-content div#hours table {
+    margin: auto;
+    border-spacing: 50px 5px;
+}
+
+#info-content p {
+    margin: 15px;
+    text-align: justify;
+}
+
+#location p {
+    text-align: center;
+}
+
+#map {
+    margin: 10px auto;
+    width: 95%;
+    height: 500px;
+    border: #68b3ae 3px solid;
+    border-radius: 5px;
+    margin-bottom: 50px;
+}
+
+/* Tablet and up*/
+@media screen and (min-width: 600px) {
+
+    main {
+        max-width: 1500px;
+        margin: auto;
+    }
+
+    #main_content > div > div, form{
+        margin: 0 50px;
+    }
+
+    #index-content div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    #bar_img {
+        width: 80%;
+    }
+
+    #booking-form {
+        width: 50%;
+    }
+}
+
+/* Desktop */
+@media screen and (min-width: 992px) {
+        
+    #logo {
+        display: block;
+        max-height: 75px;
+        padding: 10px 0;
+    }
+
+    main {
+        max-width: 2000px;
+        height: 90%;
+        top: 10%;
+    }
+
+    #index-content div,p {
+        padding: 0 10% ;
+    } 
+
+    #bar_img {
+        width: 70%;
+    }
+
+    #menu-content > div {
+        display: flex;
+        flex-direction: row;
+        padding: 10px;
+        max-width: 1200px;
+        margin: 30px auto;
+    }
+
+    #menu-content > div > img {
+        width: 50%;
+    }
+
+    #menu-content > div:nth-child(odd) > img {
+        order:2;
+    }
+
+    
+    #booking-form {
+        width: 30%;
+    }
+
+    .button:hover {
+        box-shadow: 0 0 10px var(--glow-color), inset 0 0 20px var(--primary-color);
+        transform: translateY(1px);
+    }
+
+    div.frame:hover {
+        cursor: pointer;
+        background-color: #444;
+    }
+}
+

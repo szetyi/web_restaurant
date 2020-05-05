@@ -5,289 +5,270 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Beyond Health Bar</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="newstyle.css">
 </head>
 <body>
 
     <div id="wrapper">
 
-        <!-- Container for side NAV and MAIN -->
-        <div id="divider">
+        <nav id="navbar">
+            <!--<label for="nav_button" id="hamburger">
+                
+            </label>
+            <input type="checkbox" name="nav" id="nav_button">-->
 
-            <nav id="navbar">
-                <!--<label for="nav_button" id="hamburger">
-                    
-                </label>
-                <input type="checkbox" name="nav" id="nav_button">-->
-
-                <figure id="logo">
-                    <img src="images/logo.png" alt="Beyond Health Bar">
-                </figure>
-
-                <div id="nav_links" class="center">
-
-                    <div><a id="index_Link" class="selected" onclick="changeTo(index)">Home</a></div>
-                    <div><a id="menu_Link" onclick="changeTo(menu)">Menu</a></div>
-                    <div><a id="booking_Link" onclick="changeTo(booking)">Booking</a></div>
-                    <div><a id="info_Link" onclick="changeTo(info)">Info</a></div>
-
-                </div>
-
-            </nav>
             
-            <main>
-                <div id="main_content" class="center">
+            
+            
 
-                    <!-- INDEX -->
-                    <div id="index">
-                        <div id="index-content">
+            <div id="nav-links">
+                <img src="images/logo.png" id="logo" alt="Beyond Health Bar">
+                <a id="index_Link" class="selected button" onclick="changeTo(index)">Home</a>
+                <a id="menu_Link" class="button" onclick="changeTo(menu)">Menu</a>
+                <a id="booking_Link" class="button" onclick="changeTo(booking)">Booking</a>
+                <a id="info_Link" class="button" onclick="changeTo(info)">Info</a>
+
+            </div>
+
+        </nav>
+        
+        <main>
+            <div id="main_content">
+
+                <!-- INDEX -->
+                <div id="index">
+                    <div id="index-content">
                             <h1>Beyond Health Bar </h1>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatem iusto, porro aut reiciendis in autem minus, sint iure architecto vero dicta aperiam amet consectetur rerum! Doloremque nobis temporibus nostrum ex sunt incidunt ea similique dicta libero praesentium atque, facilis sint excepturi nulla expedita mollitia! Incidunt tenetur molestiae at. Optio, officia!</p>
-                            <div id="index-content-images">
-                                <img id="bar_img" src="images/salad_bar.jfif" alt="">
-                                <div>
-                                    <img id="logo_img" src="images/logo.png" alt="Beyond Health Bar">
-                                    <h2>* * *</h2>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia dolorum magnam at modi sunt nulla voluptatum nisi molestiae impedit. Harum animi facere placeat excepturi tempore!</p>
-                                </div>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti officiis optio, laborum adipisci nam natus repellendus sed vero eius assumenda eum, nisi velit! Aliquam nesciunt nemo, dicta, ad veniam illo error blanditiis sint dolore et excepturi fugiat? Placeat maiores debitis dignissimos, nam tenetur earum. Est delectus quia nemo voluptas sapiente, neque debitis amet sunt eum enim eius temporibus inventore architecto atque ea. Iure aperiam ea eligendi officiis eos aliquid explicabo, cumque possimus qui, earum nam ut natus exercitationem incidunt doloremque!</p>
+                        <div>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia dolorum magnam at modi sunt nulla voluptatum nisi molestiae impedit. Harum animi facere placeat excepturi tempore!</p>
+                            <img id="logo_img" src="images/logo.png" alt="Beyond Health Bar">
                         </div>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatem iusto, porro aut reiciendis in autem minus, sint iure architecto vero dicta aperiam amet consectetur rerum! Doloremque nobis temporibus nostrum ex sunt incidunt ea similique dicta libero praesentium atque, facilis sint excepturi nulla expedita mollitia! Incidunt tenetur molestiae at. Optio, officia!</p>
+                        
+                        <img id="bar_img" src="images/salad_bar.jfif" alt="">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti officiis optio, laborum adipisci nam natus repellendus sed vero eius assumenda eum, nisi velit! Aliquam nesciunt nemo, dicta, ad veniam illo error blanditiis sint dolore et excepturi fugiat? Placeat maiores debitis dignissimos, nam tenetur earum. Est delectus quia nemo voluptas sapiente, neque debitis amet sunt eum enim eius temporibus inventore architecto atque ea. Iure aperiam ea eligendi officiis eos aliquid explicabo, cumque possimus qui, earum nam ut natus exercitationem incidunt doloremque!</p>
                     </div>
-
-                    <!-- MENU -->
-                    <!-- Populated by scripts. -->
-                    <div id="menu">
-                        <div id="menu-content">
-                            <h1> Menu </h1>
-                            <!-- 
-                                FOOD_DIV
-                                    IMG
-                                    TEXT_DIV
-                                        H2
-                                        ICON_DIV
-                                            IMG
-                                            IMG
-                                            IMG
-                                        P
-                            -->
-                        </div>
-                    </div>
-
-                    <!-- BOOKING -->
-                    <div id="booking">
-                        <form id="booking-content">
-                            <h1> Booking </h1>
-                            <div id="booking-form">
-                                <label for="name"> Name </label>
-                                <input type="text" name="name" id="name" placeholder="Firstname Lastname" required>
-
-                                <label for="seats"> Seats </label>
-                                <input type="number" name="seats" id="seats" placeholder="2" required>
-                                
-                                <label for="phone"> Phone </label>
-                                <input type="tel" name="phone" id="phone" pattern="[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*" placeholder="+(36) 30 1234 567" required>
-
-                                <label for="email"> Email </label>
-                                <input type="email" name="email" id="email" placeholder="you@provider.com" required>
-                                
-                                <label for="booking-date"> Date </label>
-                                <input type="date" name="booking-date" id="booking-date" max="2099-12-31" required>
-                                
-                                <label for="booking-time"> Time </label>
-                                <select name="booking-time" id="booking-time">
-                                    <option class="extra" value="10:00">10:00</option>
-                                    <option class="extra" value="10:30">10:30</option>
-                                    <option class="extra" value="11:00">11:00</option>
-                                    <option class="extra" value="11:30">11:30</option>
-                                    <option value="12:00">12:00</option>
-                                    <option value="12:30">12:30</option>
-                                    <option value="13:00">13:00</option>
-                                    <option value="13:30">13:30</option>
-                                    <option value="14:00">14:00</option>
-                                    <option value="14:30">14:30</option>
-                                    <option value="15:00">15:00</option>
-                                    <option value="15:30">15:30</option>
-                                    <option value="16:00">16:00</option>
-                                    <option value="16:30">16:30</option>
-                                    <option value="17:00">17:00</option>
-                                    <option value="17:30">17:30</option>
-                                    <option value="18:00">18:00</option>
-                                    <option value="18:30">18:30</option>
-                                    <option value="19:00">19:00</option>
-                                    <option value="19:30">19:30</option>
-                                    <option class="extra" value="20:00">20:00</option>
-                                    <option class="extra" value="20:30">20:30</option>
-                                    <option class="extra" value="21:00">21:00</option>
-                                    <option class="extra" value="21:30">21:30</option>
-                                </select>
-
-                                
-                            </div>
-
-                            <p> Please select which table you would like to sit at.</p>
-                            <div id="booking-select">
-                                <div class="box box-street">
-                                    <p>Street</p>
-                                </div>
-                                <div class="box box-wall">
-                                    <p>Wall</p>
-                                </div>
-                                <div class="box box1 table">
-                                    <div class=frame onclick="selectFrame(this)">
-                                        <span class="helper"></span>
-                                        <img src="images/icons/terrace.png"/>
-                                    </div>
-                                </div>
-                                <div class="box box2 table">
-                                    <div class=frame onclick="selectFrame(this)">
-                                        <span class="helper"></span>
-                                        <img src="images/icons/terrace.png"/>
-                                    </div>
-                                </div>
-                                <div class="box box3 table">
-                                    <div class=frame onclick="selectFrame(this)">
-                                        <span class="helper"></span>
-                                        <img src="images/icons/table.png"/>
-                                    </div>
-                                </div>
-                                <div class="box box4 table">
-                                    <div class=frame onclick="selectFrame(this)">
-                                        <span class="helper"></span>
-                                        <img src="images/icons/table.png"/>
-                                    </div>
-                                </div>
-                                <div class="box box5 table">
-                                    <div class=frame onclick="selectFrame(this)">
-                                        <span class="helper"></span>
-                                        <img src="images/icons/table.png"/>
-                                    </div>
-                                </div>
-                                <div class="box box6 table">
-                                    <div class=frame onclick="selectFrame(this)">
-                                        <span class="helper"></span>
-                                        <img src="images/icons/table.png"/>
-                                    </div>
-                                </div>
-                                <div class="box box7 table">
-                                    <div class=frame onclick="selectFrame(this)">
-                                        <span class="helper"></span>
-                                        <img src="images/icons/table.png"/>
-                                    </div>
-                                </div>
-                                <div class="box box8">
-                                        <p> Bar </p>
-                                </div>
-                                <!-- <div class="box box8">
-                                    <div class=frame>
-                                        <span class="helper"></span>
-                                        <img src="images/icons/table.png"/>
-                                    </div>
-                                </div> -->
-                            </div>
-
-                            <div id="booking-submit">
-                                <p><span id="form_error"></span></p>
-                                <a href="" class="button" id="submit">Submit</a>
-                                <!-- <input type="submit" value="Submit" class="button" id="submit"> -->
-                            </div>
-
-                        </form>
-                    </div>
-
-                    <!-- INFO -->
-                    <div id="info">
-                        <div id="info-content">
-                            <div id="hours">
-                                <h1> Opening Hours </h1>
-
-                                <table>
-                                    <tr>
-                                        <td>
-                                            Monday
-                                        </td>
-
-                                        <td>
-                                            12 PM - 20 PM
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Tuesday
-                                        </td>
-
-                                        <td>
-                                            12 PM - 20 PM
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Wednesday
-                                        </td>
-
-                                        <td>
-                                            12 PM - 20 PM
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Thursday
-                                        </td>
-
-                                        <td>
-                                            12 PM - 20 PM
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Friday
-                                        </td>
-
-                                        <td>
-                                            10 AM - 22 PM
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Saturday
-                                        </td>
-
-                                        <td>
-                                            10 AM - 22 PM
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Sunday
-                                        </td>
-
-                                        <td>
-                                            12 PM - 20 PM
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-
-                            <div id="events">
-                                <h1> Events reservation </h1>
-                                <p> If you would like to book an event at our bar, please send the details to us. Please include your e-mail address and/or your phone number. Our collegues will respond as soon as possible.</p>
-                                <a href="mailto:reservation@beyondhealthbar.com" class="button"> Book Event </a>
-                            </div>
-                            
-                            <div id="location">
-                                <h1> Location </h1>
-                                <p> Magyarország 1074 Budapest, Rákóczi út 52. </p>
-                                <div id="map"></div>
-                            </div>
-                            
-                        </div>
-                    </div>
-
                 </div>
-            </main>
 
+                <!-- MENU -->
+                <!-- Populated by scripts. -->
+                <div id="menu">
+                    <div id="menu-content">
+                        <h1> Menu </h1>
+                    </div>
+                </div>
 
-        </div> <!--divider-->
+                <!-- BOOKING -->
+                <div id="booking">
+                    <form id="booking-content">
+                        <h1> Booking </h1>
+                        <div id="booking-form">
+                            <label for="name"> Name </label>
+                            <input type="text" name="name" id="name" placeholder="Firstname Lastname" required>
+
+                            <label for="seats"> Seats </label>
+                            <input type="number" name="seats" id="seats" placeholder="2" required>
+                            
+                            <label for="phone"> Phone </label>
+                            <input type="tel" name="phone" id="phone" pattern="[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*" placeholder="+(36) 30 1234 567" required>
+
+                            <label for="email"> Email </label>
+                            <input type="email" name="email" id="email" placeholder="you@provider.com" required>
+                            
+                            <label for="booking-date"> Date </label>
+                            <input type="date" name="booking-date" id="booking-date" max="2099-12-31" required>
+                            
+                            <label for="booking-time"> Time </label>
+                            <select name="booking-time" id="booking-time">
+                                <option class="extra" value="10:00">10:00</option>
+                                <option class="extra" value="10:30">10:30</option>
+                                <option class="extra" value="11:00">11:00</option>
+                                <option class="extra" value="11:30">11:30</option>
+                                <option value="12:00">12:00</option>
+                                <option value="12:30">12:30</option>
+                                <option value="13:00">13:00</option>
+                                <option value="13:30">13:30</option>
+                                <option value="14:00">14:00</option>
+                                <option value="14:30">14:30</option>
+                                <option value="15:00">15:00</option>
+                                <option value="15:30">15:30</option>
+                                <option value="16:00">16:00</option>
+                                <option value="16:30">16:30</option>
+                                <option value="17:00">17:00</option>
+                                <option value="17:30">17:30</option>
+                                <option value="18:00">18:00</option>
+                                <option value="18:30">18:30</option>
+                                <option value="19:00">19:00</option>
+                                <option value="19:30">19:30</option>
+                                <option class="extra" value="20:00">20:00</option>
+                                <option class="extra" value="20:30">20:30</option>
+                                <option class="extra" value="21:00">21:00</option>
+                                <option class="extra" value="21:30">21:30</option>
+                            </select>
+
+                            
+                        </div>
+
+                        <p> Please select which table you would like to sit at.</p>
+                        <div id="booking-select">
+                            <div class="box box-street">
+                                <p>Street</p>
+                            </div>
+                            <div class="box box-wall">
+                                <p>Wall</p>
+                            </div>
+                            <div class="box box1 table">
+                                <div class=frame onclick="selectFrame(this)">
+                                    <span class="helper"></span>
+                                    <img src="images/icons/terrace.png"/>
+                                </div>
+                            </div>
+                            <div class="box box2 table">
+                                <div class=frame onclick="selectFrame(this)">
+                                    <span class="helper"></span>
+                                    <img src="images/icons/terrace.png"/>
+                                </div>
+                            </div>
+                            <div class="box box3 table">
+                                <div class=frame onclick="selectFrame(this)">
+                                    <span class="helper"></span>
+                                    <img src="images/icons/table.png"/>
+                                </div>
+                            </div>
+                            <div class="box box4 table">
+                                <div class=frame onclick="selectFrame(this)">
+                                    <span class="helper"></span>
+                                    <img src="images/icons/table.png"/>
+                                </div>
+                            </div>
+                            <div class="box box5 table">
+                                <div class=frame onclick="selectFrame(this)">
+                                    <span class="helper"></span>
+                                    <img src="images/icons/table.png"/>
+                                </div>
+                            </div>
+                            <div class="box box6 table">
+                                <div class=frame onclick="selectFrame(this)">
+                                    <span class="helper"></span>
+                                    <img src="images/icons/table.png"/>
+                                </div>
+                            </div>
+                            <div class="box box7 table">
+                                <div class=frame onclick="selectFrame(this)">
+                                    <span class="helper"></span>
+                                    <img src="images/icons/table.png"/>
+                                </div>
+                            </div>
+                            <div class="box box8">
+                                    <p> Bar </p>
+                            </div>
+                            <!-- <div class="box box8">
+                                <div class=frame>
+                                    <span class="helper"></span>
+                                    <img src="images/icons/table.png"/>
+                                </div>
+                            </div> -->
+                        </div>
+
+                        <div id="booking-submit">
+                            <p><span id="form_error">Press Submit when you're done!</span></p>
+                            <a href="" class="button" id="submit">Submit</a>
+                            <!-- <input type="submit" value="Submit" class="button" id="submit"> -->
+                        </div>
+
+                    </form>
+                </div>
+
+                <!-- INFO -->
+                <div id="info">
+                    <div id="info-content">
+                        <div id="hours">
+                            <h1> Opening Hours </h1>
+
+                            <table>
+                                <tr>
+                                    <td>
+                                        Monday
+                                    </td>
+
+                                    <td>
+                                        12 PM - 20 PM
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Tuesday
+                                    </td>
+
+                                    <td>
+                                        12 PM - 20 PM
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Wednesday
+                                    </td>
+
+                                    <td>
+                                        12 PM - 20 PM
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Thursday
+                                    </td>
+
+                                    <td>
+                                        12 PM - 20 PM
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Friday
+                                    </td>
+
+                                    <td>
+                                        10 AM - 22 PM
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Saturday
+                                    </td>
+
+                                    <td>
+                                        10 AM - 22 PM
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Sunday
+                                    </td>
+
+                                    <td>
+                                        12 PM - 20 PM
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div id="events">
+                            <h1> Events reservation </h1>
+                            <p> If you would like to book an event at our bar, please send the details to us. Please include your e-mail address and/or your phone number. Our collegues will respond as soon as possible.</p>
+                            <a href="mailto:reservation@beyondhealthbar.com" class="button"> Book Event </a>
+                        </div>
+                        
+                        <div id="location">
+                            <h1> Location </h1>
+                            <p> Magyarország 1074 Budapest, Rákóczi út 52. </p>
+                            <div id="map"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+            </div>
+        </main>
         
     </div> <!--wrapper-->
 
